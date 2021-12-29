@@ -7,6 +7,7 @@
         class="w-full" />
       </div>
       <h3 class="font-bold text-lg mt-0" v-if="title" v-html="title" />
+      <h4 class="font-bold text-lg mt-0" v-if="tagline" v-html="tagline" />
       <p v-if="description" v-html="description" />
     </div>
 </template>
@@ -25,6 +26,10 @@ export default {
     title: {
         type: String,
         required: true
+    },
+    tagline: {
+      type: String,
+      required: true
     },
     description: {
       type: String,

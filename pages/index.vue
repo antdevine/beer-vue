@@ -2,45 +2,67 @@
   <section class="container">
     <div>
       <Logo/>
-
-      <button
-        class="Button"
+      
+      <div class="flex flex-row w-full justify-center">
+        <button
+        class="Button font-bold u-text-lg uppercase mr-4"
         v-on:click="sortedArray">
         Sort name by {{nameSort}}</button>
 
-        <button
-        class="Button"
-        v-on:click="filteredSessionBeer" v-if="!filtered">
-        Filter Session Beers</button>
-
-        <button
-        class="Button"
-        v-on:click="resetFilters" v-if="filtered">
-        Reset filters</button>
-
         <input v-model="searchValue" class="border-2 border-grey-100" />
         <button
-        class="Button"
+        class="Button border-2 font-bold p-2 text-sm uppercase"
         v-on:click="searchBeers">
         Search beers</button>
 
         <button
-        class="Button"
+        class="Button border-2"
         v-on:click="resetFilters" v-if="searched">
         X</button>
+      </div>
+      
+
+        
 
      
-      <div class="links grid gap-4 grid-cols-3">
-        <nuxt-link
-          v-for="beer in beers"
-          :to="{name: 'beers-id', params: {id: beer.id}}"
-          :key="beer.id"
-          class="w-full"
-        >
-          {{beer.name}}
-          <img :src='beer.image_url' :alt='beer.name' />
-        </nuxt-link>
-      </div>
+
+        <div class="flex flex-col lg:flex-row">
+          <div>
+            <h3>Alchol Percentage</h3>
+            <input type="radio" id="alcholpercent1" name="alcholpercent" value="3.5" @change="alcholPercentFilter($event)">
+            <label for="alcholpercent">3.5%</label><br>
+            <input type="radio" id="alcholpercent2" name="alcholpercent" value="4.5" @change="alcholPercentFilter($event)">
+            <label for="alcholpercent">4.5%</label><br>
+            <input type="radio" id="alcholpercent3" name="alcholpercent" value="5.5" @change="alcholPercentFilter($event)">
+            <label for="alcholpercent">5.5%</label><br>
+
+            <button
+            class="Button border-2"
+            v-on:click="filteredSessionBeer" v-if="!filtered">
+            Filter Session Beers</button>
+
+            <button
+            class="Button border-2"
+            v-on:click="resetFilters" v-if="filtered">
+            Reset filters</button>
+          </div>
+
+          <div class="links grid gap-14 grid-cols-3">
+            <nuxt-link
+              v-for="beer in beers"
+              :to="{name: 'beers-id', params: {id: beer.id}}"
+              :key="beer.id"
+              class="w-full flex flex-col justify-end bg-green-100 p-6 mb-6 h-full hover:opacity-60 group"
+            >
+              <div>
+                <img :src='beer.image_url' :alt='beer.name' class="beer-img mx-auto mb-4" />
+                <h3 class="font-bold text-4xl uppercase mt-0" v-if="beer.name" v-html="beer.name" />
+                <div class="uppercase border-4 bg-transparent text-black border-purple-900 group-hover:bg-purple-900 group-hover:text-white font-bold text-4xl my-6 p-4">Drink me</div>
+              </div>
+            </nuxt-link>
+          </div>
+        </div>
+     
     </div>
   </section>
 </template>
@@ -131,6 +153,18 @@ export default {
           }
         this.beers = searchBeers;
         this.searched = true;
+      },
+      alcholPercentFilter(event) {
+        this.allBeers = this.beers;
+        let filteredBeers = this.allBeers;
+
+        var radioChoice = event.target.value;
+
+         filteredBeers = filteredBeers.filter((item) => {
+            return (item.abv <= radioChoice);
+          })
+          this.filtered = true;
+          this.beers = filteredBeers;
       }
   }
 }
@@ -142,6 +176,8 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
@@ -162,5 +198,8 @@ export default {
 }
 .links > .button--grey {
   margin: 5px;
+}
+.beer-img {
+  max-width: 200px;
 }
 </style>

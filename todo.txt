@@ -1,0 +1,6 @@
+Create filters:
+alchol percentage checkboxes
+price slider
+
+move code into components
+

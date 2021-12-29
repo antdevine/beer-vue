@@ -2,7 +2,7 @@
   <div class="container">
     <Logo />
     <article>
-      <Beer :title="beer.name" :imageUrl="beer.image_url" :description="beer.description" />
+      <Beer :title="beer.name" :imageUrl="beer.image_url" :description="beer.description" :tagline="beer.tagline" />
     </article>
   </div>
 </template>
