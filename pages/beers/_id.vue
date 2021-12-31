@@ -3,12 +3,14 @@
     <Logo />
     <article>
       <Beer :title="beer.name" :imageUrl="beer.image_url" :description="beer.description" :tagline="beer.tagline" />
+      <p v-for="pairing in beer.food_pairing"
+              v-html="pairing"
+              :key="pairing" />
     </article>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
   import axios from 'axios'
   export default {
     head () {

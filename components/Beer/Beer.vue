@@ -1,14 +1,16 @@
 <template>
-    <div class="Card h-full p-4">
-      <div class="Card-image">
+    <div class="Card h-full flex p-14 max-w-5xl">
+      <div class="Card-image mr-16">
         <img 
         :src="imageUrl" 
         :alt="title" 
         class="w-full" />
       </div>
-      <h3 class="font-bold text-lg mt-0" v-if="title" v-html="title" />
-      <h4 class="font-bold text-lg mt-0" v-if="tagline" v-html="tagline" />
-      <p v-if="description" v-html="description" />
+      <div>
+        <h3 class="font-bold text-6xl mt-0 uppercase" v-if="title" v-html="title" />
+        <h4 class="font-bold text-3xl mt-0 text-gray-400" v-if="tagline" v-html="tagline" />
+        <p v-if="description" v-html="description" />
+      </div>
     </div>
 </template>
 
