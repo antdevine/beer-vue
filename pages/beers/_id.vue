@@ -3,9 +3,12 @@
     <Logo />
     <article>
       <Beer :title="beer.name" :imageUrl="beer.image_url" :description="beer.description" :tagline="beer.tagline" />
-      <p v-for="pairing in beer.food_pairing"
+      <div class="p-8 mx-14 border-2 inline-block">
+        <h4 class="font-bold text-3xl mt-0 text-gray-400 uppercase">Food pairing</h4>
+        <p v-for="pairing in beer.food_pairing"
               v-html="pairing"
               :key="pairing" />
+      </div>
     </article>
   </div>
 </template>

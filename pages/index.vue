@@ -27,7 +27,7 @@
      
 
         <div class="flex flex-col lg:flex-row">
-          <div>
+          <div class="w-4/12">
             <h3>Alchol Percentage</h3>
             <input type="radio" id="alcholpercent1" name="alcholpercent" value="3.5" @change="alcholPercentFilter($event)">
             <label for="alcholpercent">3.5%</label><br>

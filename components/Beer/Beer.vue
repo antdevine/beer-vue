@@ -1,5 +1,5 @@
 <template>
-    <div class="Card h-full flex p-14 max-w-5xl">
+    <div class="Card h-auto flex p-14 pb-3 max-w-5xl">
       <div class="Card-image mr-16">
         <img 
         :src="imageUrl" 
