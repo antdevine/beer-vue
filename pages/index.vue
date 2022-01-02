@@ -100,6 +100,30 @@ export default {
     console.log(response.data, 'response');
     return {beers: response.data}
   },
+  async beforeCreate () {
+    console.log('before create');
+  },
+  async created () {
+    console.log('created');
+  },
+  async beforeMount () {
+    console.log('before mount');
+  },
+  async mounted () {
+    console.log('mounted');
+  },
+  async beforeUpdate () {
+    console.log('before update');
+  },
+  async updated () {
+    console.log('updated');
+  },
+  async beforeDestroy () {
+    console.log('before destroy');
+  },
+  async destroyed () {
+    console.log('destroyed');
+  },
 
   methods: {
     sortedArray: function() {
